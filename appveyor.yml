@@ -44,5 +44,5 @@ test_script:
 - call lua -v
 
 on_success:
-# - echo "Generating artifacts"
-# - call .appveyor\artifacts.bat
+- echo "Generating artifacts"
+- call .appveyor\artifacts.bat
