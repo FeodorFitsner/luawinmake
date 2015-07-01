@@ -9,6 +9,6 @@ set _artifact_file=luawinmake-%APPVEYOR_REPO_COMMIT%-%platform%-%Configuration%.
 
 %SEVENZIP% a %_artifact_file% %INSTALL_DIR%\*
 dir %_artifact_file%
-appveyor PushArtifact %_artifact_file%
+rem appveyor PushArtifact %_artifact_file%
 
 endlocal
