@@ -46,4 +46,4 @@ test_script:
 on_success:
 - echo "Generating artifacts"
 - call .appveyor\artifacts.bat
-- ps: Push-AppveyorArtifact "luawinmake-$env:APPVEYOR_REPO_COMMIT-$env:platform-$env:Configuration.7z"
+- ps: Push-AppveyorArtifact "$env:INSTALL_DIR\luawinmake-$env:APPVEYOR_REPO_COMMIT-$env:platform-$env:Configuration.7z"
