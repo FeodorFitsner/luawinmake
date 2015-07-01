@@ -1,4 +1,4 @@
-@echo off
+@echo on
 
 Setlocal EnableDelayedExpansion EnableExtensions
 
@@ -8,6 +8,7 @@ cd %INSTALL_DIR%
 set _artifact_file=luawinmake-%APPVEYOR_REPO_COMMIT%-%platform%-%Configuration%.7z
 
 %SEVENZIP% a %_artifact_file% %INSTALL_DIR%\*
+dir %_artifact_file%
 appveyor PushArtifact %_artifact_file%
 
 endlocal
