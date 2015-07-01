@@ -11,4 +11,4 @@ set _artifact_file=luawinmake-%APPVEYOR_REPO_COMMIT%-%platform%-%Configuration%.
 dir %_artifact_file%
 rem appveyor PushArtifact %_artifact_file%
 
-endlocal & appveyor PushArtifact %_artifact_file%
+endlocal & appveyor PushArtifact "%INSTALL_DIR%\%_artifact_file%"
