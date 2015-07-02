@@ -27,8 +27,11 @@ platform:
 init:
 
 install:
-- ps: "'<?xml version=\"1.0\" encoding=\"utf-8\" ?> \n<configuration> \n <system.net> \n  <connectionManagement> \n   <add address=\"*\" maxconnection=\"100\" /> \n  </connectionManagement> \n </system.net> \n</configuration>' | Out-File 'C:\\Program Files\\AppVeyor\\BuildAgent\\appveyor.exe.config'\n"
-- ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+- ps: $zipPath = "$($env:USERPROFILE)\appveyor.exe.zip"
+- ps: (New-Object Net.WebClient).DownloadFile('http://www.appveyor.com/downloads/test/appveyor.exe.zip', $zipPath)
+- ps: 7z x $zipPath -y -o"C:\Program Files\AppVeyor\BuildAgent" | Out-Null
+#- ps: "'<?xml version=\"1.0\" encoding=\"utf-8\" ?> \n<configuration> \n <system.net> \n  <connectionManagement> \n   <add address=\"*\" maxconnection=\"100\" /> \n  </connectionManagement> \n </system.net> \n</configuration>' | Out-File 'C:\\Program Files\\AppVeyor\\BuildAgent\\appveyor.exe.config'\n"
+#- ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 # Make compiler command line tools available
 - call .appveyor\set_compiler_env.bat
 # Get Lua sources
