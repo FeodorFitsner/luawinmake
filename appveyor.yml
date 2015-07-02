@@ -28,7 +28,7 @@ init:
 
 install:
 - ps: "'<?xml version=\"1.0\" encoding=\"utf-8\" ?> \n<configuration> \n <system.net> \n  <connectionManagement> \n   <add address=\"*\" maxconnection=\"100\" /> \n  </connectionManagement> \n </system.net> \n</configuration>' | Out-File 'C:\\Program Files\\AppVeyor\\BuildAgent\\appveyor.exe.config'\n"
-- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+- ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 # Make compiler command line tools available
 - call .appveyor\set_compiler_env.bat
 # Get Lua sources
